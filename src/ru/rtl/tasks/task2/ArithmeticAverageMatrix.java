@@ -4,6 +4,9 @@ import ru.rtl.tasks.RunnableTask;
 
 public class ArithmeticAverageMatrix extends RunnableTask {
 
+    private int rows;
+    private int cols;
+    private int matrix[][];
 
     public ArithmeticAverageMatrix(int rows, int cols){
         if (rows <= 0 || cols <= 0) {
@@ -11,7 +14,8 @@ public class ArithmeticAverageMatrix extends RunnableTask {
                     "Значения для параметров 'rows' и 'cols' должны быть больше нуля.");
         }
         else{
-
+            this.rows = rows;
+            this.cols = cols;
         };
     }
 
@@ -34,22 +38,23 @@ public class ArithmeticAverageMatrix extends RunnableTask {
     @Override
     public void init() {
 
-        this.matrix = new int[rows][cols];
+        int x[][] = new int[rows][cols];
 
         for (int i = 0; i < rows - 1; i++) {
             for (int j = 0; j < cols - 1; j++) {
                 if (i % 3 == 0){
-                    matrix[i][j] = 100;
+                    x[i][j] = 100;
                 }
 
                 else if (j % 2 == 0){
-                    matrix[i][j] = 200;
+                    x[i][j] = 200;
                 }
 
                 else{
-                    matrix[i][j] = i * j;
+                    x[i][j] = i * j;
                 }
             }
         }
+        this.matrix = x;
     }
 }
